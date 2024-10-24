@@ -23,5 +23,4 @@ while True:
         pass
     
     elif luaChon == 3:
-        if tools.yesOrNo("Bạn có chắc không"):
-            break
+        break
