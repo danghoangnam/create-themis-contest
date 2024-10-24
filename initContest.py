@@ -8,7 +8,7 @@ test = "test"
 def ifExistContest() -> bool:
     return os.path.exists(baiLam) or os.path.exists(deThi) or os.path.exists(test)
 
-def init():
+def createContest():
 
     if os.path.exists(baiLam):
         shutil.rmtree(baiLam)

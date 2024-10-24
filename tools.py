@@ -1,4 +1,4 @@
-def choose(array) -> int:
+def menu(array) -> int:
     for i in range(len(array)):
         print(f"{i}. {array[i]}")
     ans = int(input("Chọn: "))
