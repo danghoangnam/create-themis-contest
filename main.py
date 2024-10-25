@@ -32,7 +32,12 @@ while True:
         pass
 
     elif luaChon == 3:
-        pass
+        name = input("Nhập tên bài tập: ")
+
+        if problem.problemExist(name):
+            problem.deleteProblem(name)
+        else:
+            print("Bài tập không tồn tại")
     
     elif luaChon == 4:
         break
