@@ -1,5 +1,6 @@
 import tools
 import initContest
+import problem
 
 while True:
     thaoTac = ['Tạo contest mới',
@@ -18,7 +19,14 @@ while True:
             initContest.createContest()
 
     elif luaChon == 1:
-        pass
+        name = input("Nhập tên bài tập: ")
+
+        if problem.problemExist(name):
+            if tools.yesOrNo("Bài tập này đã tồn tại. Bạn có muốn thay thế không"):
+                problem.deleteProblem(name)
+                problem.createProblem(name)
+        else:
+            problem.createProblem(name)
 
     elif luaChon == 2:
         pass
