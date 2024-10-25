@@ -5,6 +5,7 @@ while True:
     thaoTac = ['Tạo contest mới',
                'Thêm một bài tập',
                'Thêm test cho một bài tập có sẵn',
+               'Xóa bài tập',
                'Thoát chương trình']
     
     luaChon = tools.menu(thaoTac)
@@ -21,6 +22,9 @@ while True:
 
     elif luaChon == 2:
         pass
-    
+
     elif luaChon == 3:
+        pass
+    
+    elif luaChon == 4:
         break
