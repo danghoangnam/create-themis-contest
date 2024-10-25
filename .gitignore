@@ -1,4 +1,6 @@
 baiLam/
 deThi/
 
+*.contest
+
 __pycache__
