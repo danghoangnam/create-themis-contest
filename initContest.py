@@ -3,10 +3,9 @@ import shutil
 
 baiLam = "baiLam"
 deThi = "deThi"
-test = "test"
 
 def ifExistContest() -> bool:
-    return os.path.exists(baiLam) or os.path.exists(deThi) or os.path.exists(test)
+    return os.path.exists(baiLam) or os.path.exists(deThi)
 
 def createContest():
 
@@ -19,8 +18,3 @@ def createContest():
         shutil.rmtree(deThi)
         pass
     os.mkdir(deThi)
-
-    if os.path.exists(test):
-        shutil.rmtree(test)
-        pass
-    os.mkdir(test)
