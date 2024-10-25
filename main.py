@@ -29,7 +29,15 @@ while True:
             problem.createProblem(name)
 
     elif luaChon == 2:
-        pass
+        name = input("Nhập tên bài tập: ")
+
+        if problem.problemExist(name):
+            problem.addTest(name)
+        else:
+            print("Bài tập không tồn tại")
+            if tools.yesOrNo("Bạn có muốn tạo bài tập mới không"):
+                problem.createProblem(name)
+                problem.addTest(name)
 
     elif luaChon == 3:
         name = input("Nhập tên bài tập: ")
