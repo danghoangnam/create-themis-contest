@@ -17,7 +17,7 @@ def addTest(problemName):
     fi = input("Nhập tên file input: ")
     fo = input("Nhập tên file output: ")
 
-    stt = len(list(filter(lambda x: x if x.find('.') != -1 else None,os.listdir('./deThi/' + problemName + '/'))))
+    stt = len(list(filter(lambda x: x if x.find('.') == -1 else None,os.listdir('./deThi/' + problemName + '/'))))
     while True:
         path = './deThi/' + problemName + '/' + 'test' + str(stt)
         os.mkdir(path)
