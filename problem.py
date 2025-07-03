@@ -176,3 +176,56 @@ def addTest(problemName):
 
         if tools.yesOrNo("Bạn có muốn thêm testcase không") == False:
             break
+
+# Cấu trúc của thư mục stress test:
+# ./stress/problemName/test.py
+# ./stress/problemName/trau.exe
+
+def createStressTest(problemName):
+    currentProblem = None
+    for i in problemList:
+        if i.name == problemName:
+            currentProblem = i
+            break
+    if currentProblem == None:
+        raise ValueError(f"Bài tập '{problemName}' không tồn tại.")
+    
+    if not os.path.exists('./stress/' + problemName):
+        raise FileNotFoundError(f"Thư mục stress test cho bài tập '{problemName}' không tồn tại.")
+    if not os.path.exists('./stress/' + problemName + '/test.py'):
+        raise FileNotFoundError(f"File test.py cho bài tập '{problemName}' không tồn tại.")
+    if not os.path.exists('./stress/' + problemName + '/trau.exe'):
+        raise FileNotFoundError(f"File trau.exe cho bài tập '{problemName}' không tồn tại.")
+    
+    cnt = int(input("Nhập số lượng stress test cần tạo: "))
+
+    print(f"Đang tạo stress test cho bài tập '{problemName}'...")
+    print("Nhấn Ctrl+C để hủy.")
+    cwd = os.getcwd()
+    try:
+
+        for i in range(cnt):
+            print(f"Đang tạo stress{i} cho bài tập {problemName}")
+            path = f'./deThi/{problemName}/stress{i}/'
+
+            if not os.path.exists(path):
+                os.makedirs(path)
+
+            shutil.copyfile('./stress/' + problemName + '/test.py', path + 'test.py')
+            shutil.copyfile('./stress/' + problemName + '/trau.exe', path + 'trau.exe')
+
+            os.chdir(path)
+            os.system('python test.py')
+            os.system('.\\trau.exe')
+            os.remove('test.py')
+            os.remove('trau.exe')
+
+            os.chdir(cwd)
+
+    except KeyboardInterrupt:
+        print("\nĐã hủy quá trình tạo stress test.")
+
+    os.chdir(cwd)
+    print(f"Đã tạo {cnt} stress test cho bài tập '{problemName}' thành công.")
+    currentProblem.updateTestCaseList()
+    currentProblem.saveConfig()
