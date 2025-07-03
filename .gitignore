@@ -6,3 +6,5 @@ deThi/
 __pycache__
 
 venv/
+
+.vscode/
