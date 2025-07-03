@@ -2,11 +2,14 @@ import tools
 import initContest
 import problem
 
+problem.updateProblemList()
+
 while True:
     thaoTac = ['Tạo contest mới',
                'Thêm một bài tập',
                'Thêm test cho một bài tập có sẵn',
                'Xóa bài tập',
+               'Xem danh sách bài tập',
                'Thoát chương trình']
     
     luaChon = tools.menu(thaoTac)
@@ -48,4 +51,16 @@ while True:
             print("Bài tập không tồn tại")
     
     elif luaChon == 4:
+        problem.updateProblemList()
+        if not problem.problemList:
+            print("Không có bài tập nào.")
+            continue
+
+        print("Danh sách bài tập:")
+        for i in problem.problemList:
+            print(f"- {i.name}")
+    
+    elif luaChon == 5:
+        problem.saveAllProblems()
+        print("Đã lưu tất cả bài tập.")
         break
