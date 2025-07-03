@@ -10,6 +10,7 @@ while True:
                'Thêm test cho một bài tập có sẵn',
                'Xóa bài tập',
                'Xem danh sách bài tập',
+               'Tạo stress test',
                'Thoát chương trình']
     
     luaChon = tools.menu(thaoTac)
@@ -61,6 +62,18 @@ while True:
             print(f"- {i.name}")
     
     elif luaChon == 5:
+        name = input("Nhập tên bài tập: ")
+        if problem.problemExist(name):
+            try:
+                problem.createStressTest(name)
+            except ValueError as e:
+                print(e)
+            except FileNotFoundError as e:
+                print(e)
+        else:
+            print("Bài tập không tồn tại")
+    
+    elif luaChon == 6:
         problem.saveAllProblems()
         print("Đã lưu tất cả bài tập.")
         break
